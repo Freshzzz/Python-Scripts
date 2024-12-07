@@ -11,7 +11,7 @@ def main():
 
     if(os.path.exists(shared_data)):
         with open("shared_data.yml", "r", encoding="utf-8") as file:
-            data = yaml.load(file)
+            data = yaml.safe_load(file)
     
         name = data["name"]
         DOB = data["dob"]
