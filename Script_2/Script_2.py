@@ -52,6 +52,7 @@ def change(doc, name, tel_nr, contract_number, contract_date, DOB, address):
 def write(doc, name):
     doc.save(r"E:\\Studijos\Praktika\\Script_2\\Updated Konf Sutartis.docx")
     convert(r"E:\\Studijos\Praktika\\Script_2\\Updated Konf Sutartis.docx", fr"E:\\Studijos\Praktika\\Script_2\\{name}.pdf")
+    os.remove(r"E:\\Studijos\Praktika\\Script_2\\Updated Konf Sutartis.docx")
     
 
 
