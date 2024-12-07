@@ -1,0 +1,19 @@
+name_start:
+ - studentas
+ - narys
+ - dėstytoją
+ 
+
+name_end:
+ - gim.
+ - lektorė
+ - el.p.
+ 
+
+dob_start: gim.
+
+address_start: adresas
+address_end:
+ - sudaryti
+ - tel.
+ 
