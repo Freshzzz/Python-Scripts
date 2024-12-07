@@ -1,17 +1,17 @@
 from docx import Document
 from docx2pdf import convert
-import json
+import yaml
 import os
 
 def main():
     name = ""
 
     doc = Document("E:\\Studijos\\Praktika\\Script_2\\Konf Sutartis.docx")
-    shared_data = r"E:\Studijos\Praktika\Script_3\shared_data.json"
+    shared_data = r"E:\\Studijos\\Praktika\\Script_2\\shared_data.yml"
 
     if(os.path.exists(shared_data)):
-        with open(shared_data, "r", encoding="utf-8") as file:
-            data = json.load(file)
+        with open("shared_data.yml", "r", encoding="utf-8") as file:
+            data = yaml.load(file)
     
         name = data["name"]
         DOB = data["dob"]
