@@ -1,10 +1,10 @@
 import subprocess
 import os
-import json
+import yaml
 
 # Saves the chosen data from output.txt file to a .json file
 def save_to_file(name, dob, address):
-    shared_data = r"E:\Studijos\Praktika\Script_3\shared_data.json"
+    shared_data = r"E:\\Studijos\\Praktika\\Script_2\\shared_data.yml"
     data = {
         "name": name,
         "dob": dob,
@@ -12,7 +12,7 @@ def save_to_file(name, dob, address):
         }
     
     with open(shared_data, "w", encoding="utf-8") as file:
-        json.dump(data, file)
+        yaml.dump(data, file, default_flow_style=False)
 
 # User choice function
 def choose(options):
@@ -27,7 +27,7 @@ def choose(options):
 
 # Reads from the output.txt file
 def output_file_read(names, dobs, adresses):
-    f = open(r"E:\Studijos\Praktika\output.txt", encoding="utf-8")
+    f = open(r'E:\\Studijos\\Praktika\\Script_1\\output.txt', encoding="utf-8")
     for x in f:
         x = x.lstrip()
         x = x.rstrip()
@@ -74,7 +74,7 @@ def choose_info(all_options):
 
 # Launches the 1st Script
 def first_Script():
-    script_1_path = os.path.abspath("../Script_1.py")
+    script_1_path = os.path.abspath("../Script_1/Script_1.py")
     script_1_dir = os.path.dirname(script_1_path)
     subprocess.run(
         ["python", script_1_path],
