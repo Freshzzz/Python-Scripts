@@ -94,9 +94,9 @@ def name_list(i, words, allNames, name_end):
     temporary_words = []
         
     while True:
-        if(words[i+y] not in name_end):
+        if(not_in_list(words[i+y], name_end)):
             temporary_words.append(words[i+y])
-        if(words[i+y] in name_end):
+        if(in_list(words[i+y], name_end)):
             temporary_string = " ".join(temporary_words)
             allNames.append(temporary_string.strip(","))
             break
@@ -113,11 +113,11 @@ def adress_list(i, words, allAdresses, add_end):
     y = 1
     temporary_words = []
     while True:
-        if(words[i+y] not in add_end):
+        if(not_in_list(words[i+y], add_end)):
             if(words[i+y].endswith(',') and words[i+y].istitle()):
                 words[i+y] = words[i+y].rstrip(',')
             temporary_words.append(words[i+y])
-        if(words[i+y] in add_end):
+        if(in_list(words[i+y], add_end)):
             temporary_address = ' '.join(temporary_words)
             allAdresses.append(temporary_address)
             break
@@ -134,6 +134,13 @@ def write(allNames, allDOB, allAdresses):
         f.write('\n'.join(allDOB) + '\n')
         f.write('\n 	Adresses \n')
         f.write('\n'.join(allAdresses))
+        
+
+def not_in_list(word, word_list):
+    return word not in word_list
+
+def in_list(word, word_list):
+    return word in word_list
 
 
 main()
