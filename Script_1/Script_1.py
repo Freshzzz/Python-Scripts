@@ -7,6 +7,31 @@ doc = Document("E:\\Studijos\\Praktika\\Script_1\\kolegijos praktikos Sutartis.d
 # Clears the previous data from the output.txt file
 open('output.txt', 'w', encoding="utf-8").close()
 
+def load_config(file_path):
+    required_keys = ["name_start", "name_end", "dob_start", "address_start", "address_end"]
+    try:
+        # Reads data from a .yml file
+        with open("config.yml", "r", encoding="utf-8") as f:
+            config = yaml.safe_load(f)
+            
+        for key in required_keys:
+            if key not in config:
+                raise KeyError(f"Missing: {key}")
+            
+        return config
+    
+    except FileNotFoundError:
+        print(f"Error: Configuration file '{file_path}' not found. Please provide a valid path.")
+        exit(1)  # Exit the program if the file is missing
+    except KeyError as e:
+        print(f"Error in config.yml: {e}")
+        exit(1)
+    except yaml.YAMLError as e:
+        print(f"Error reading config.yml: {e}")
+        exit(1)
+        
+        
+
 def main():
     
     # Variables
@@ -19,10 +44,8 @@ def main():
     for paragraph in doc.paragraphs:
         allText.append(paragraph.text)
     
-    # Reads data from a .yml file
-    with open("config.yml", "r", encoding="utf-8") as f:
-        config = yaml.safe_load(f)
-        
+    config = load_config("config.yml")
+    
     name_start = config['name_start']
     name_end = config['name_end']
     
