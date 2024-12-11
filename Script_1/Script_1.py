@@ -12,7 +12,8 @@ def load_config(file_path):
         # Reads data from a .yml file
         with open("config.yml", "r", encoding="utf-8") as f:
             config = yaml.safe_load(f)
-            
+        
+        # Checks if any required data is missing from the config file
         for key in required_keys:
             if key not in config:
                 raise KeyError(f"Missing: {key}")
@@ -21,7 +22,7 @@ def load_config(file_path):
     
     except FileNotFoundError:
         print(f"Error: Configuration file '{file_path}' not found. Please provide a valid path.")
-        exit(1)  # Exit the program if the file is missing
+        exit(1) 
     except KeyError as e:
         print(f"Error in config.yml: {e}")
         exit(1)
@@ -60,6 +61,7 @@ def main():
     for paragraph in doc.paragraphs:
         allText.append(paragraph.text)
     
+    # Loads the neccesary information from the config file
     config = load_config("config.yml")
     
     name_start = config['name_start']
@@ -88,7 +90,7 @@ def main():
     write(allNames, allDOB, allAdresses)
     
 
-# Saves First & Last names
+# Saves First & Last names to a list
 def name_list(i, words, allNames, name_end):
     y = 1
     temporary_words = []
@@ -136,9 +138,11 @@ def write(allNames, allDOB, allAdresses):
         f.write('\n'.join(allAdresses))
         
 
+# Helper Function Replaces "String not in list" 
 def not_in_list(word, word_list):
     return word not in word_list
 
+# Helper Function Replaces "String in list" 
 def in_list(word, word_list):
     return word in word_list
 
