@@ -1,7 +1,6 @@
 import re
 from docx import Document
 import yaml
-doc = Document("E:\\Studijos\\Praktika\\Script_1\\kolegijos praktikos Sutartis.docx")
 
 
 # Clears the previous data from the output.txt file
@@ -29,7 +28,22 @@ def load_config(file_path):
     except yaml.YAMLError as e:
         print(f"Error reading config.yml: {e}")
         exit(1)
-        
+
+
+def load_doc(file_path):
+    try:
+        doc = Document(file_path)
+        return doc
+    except FileNotFoundError:
+        print("Error: File Not Found. Please check the path")
+        exit(1)
+    except PermissionError:
+        print("Error: Insufficient permissions to access the file")
+        exit(1)
+    except Exception as e:
+        print("Error: There has been an error opening the file")
+        exit(1)
+    
         
 
 def main():
@@ -39,6 +53,8 @@ def main():
     allNames: list[str] = []
     allDOB: list[str] = []
     allAdresses: list[str] = []
+    
+    doc = load_doc("E:\\Studijos\\Praktika\\Script_1\\kolegijos praktikos Sutartis.docx")
     
     # Reads the text from a .docx file
     for paragraph in doc.paragraphs:
