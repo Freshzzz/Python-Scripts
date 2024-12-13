@@ -13,7 +13,7 @@ def save_to_file(name, dob, address):
         "address": address
         }
     
-    with open(shared_data, "w", encoding="utf-8") as file:
+    with open(shared_data_PATH, "w", encoding="utf-8") as file:
         yaml.dump(data, file, default_flow_style=False)
 
 # User choice function
@@ -29,30 +29,36 @@ def choose(options):
 
 # Reads from the output.txt file
 def output_file_read(names, dobs, adresses):
-    f = open(r'E:\\Studijos\\Praktika\\Script_1\\output.txt', encoding="utf-8")
-    for x in f:
-        x = x.lstrip()
-        x = x.rstrip()
+    try:
+        f = open(output_file_PATH, encoding="utf-8")
+        for x in f:
+            x = x.lstrip()
+            x = x.rstrip()
         
-        match x:
-            case "Names":
-                category = 1
-                continue
-            case "Date Of Birth":
-                category = 2
-                continue
-            case "Adresses":
-                category = 3
-                continue
+            match x:
+                case "Names":
+                    category = 1
+                    continue
+                case "Date Of Birth":
+                    category = 2
+                    continue
+                case "Adresses":
+                    category = 3
+                    continue
         
-        if(x != ''):
-            match category:
-                case 1:
-                    names.append(x)
-                case 2:
-                    dobs.append(x)
-                case 3:
-                    adresses.append(x)
+            if(x != ''):
+                match category:
+                    case 1:
+                        names.append(x)
+                    case 2:
+                        dobs.append(x)
+                    case 3:
+                        adresses.append(x)
+    
+    except FileNotFoundError:
+        print("output.txt file was not found!")
+    except Exception as e:
+        print("Error has occured while reading the output.txt file")
         
 
 # Gives user the choice to choose the data they want to use
