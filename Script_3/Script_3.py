@@ -92,23 +92,17 @@ def second_script():
         )
 
 def main():
-    names: list[str] = []
-    dobs: list[str] = []
-    adresses: list[str] = []
-    options = 2
-    
-    chosen_name = ""
-    chosen_dob = ""
-    chosen_ad = ""
+    names, dobs, adresses = [], [], []
     
     print("1 - Choose data from a .docx file")
     print("2 - Enter your information")
     
-    choice = choose(options)
+    choice = choose(2)
     
     if(choice == 1):
         first_Script()
         output_file_read(names, dobs, adresses)
+        
         chosen_name = choose_info(names)
         chosen_dob = choose_info(dobs)
         chosen_ad = choose_info(adresses)
