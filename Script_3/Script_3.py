@@ -63,21 +63,13 @@ def output_file_read(names, dobs, adresses):
 
 # Gives user the choice to choose the data they want to use
 def choose_info(all_options):
-    index = 0
-    i = 0
-    print("Choose the option you want to use")
-    for x in all_options:
-        i += 1
-        print(f"{i}	-	{x}")
-    index = choose(len(all_options))
+    os.system('cls')
+    print("Choose the option you want to use:")
+    for i, option in enumerate(all_options, 1):
+        print(f"{i} - {option}")
     
-    i = 0
-    for x in all_options:
-        i += 1
-        if(i == index):
-            return x
-        
-    return "false"
+    index = choose(len(all_options))
+    return all_options[index - 1]
 
 
 # Launches the 1st Script
