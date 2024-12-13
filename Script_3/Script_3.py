@@ -2,9 +2,11 @@ import subprocess
 import os
 import yaml
 
+shared_data_PATH = r"E:\\Studijos\\Praktika\\Script_2\\shared_data.yml"
+output_file_PATH = r'E:\\Studijos\\Praktika\\Script_1\\output.txt'
+
 # Saves the chosen data from output.txt file to a .json file
 def save_to_file(name, dob, address):
-    shared_data = r"E:\\Studijos\\Praktika\\Script_2\\shared_data.yml"
     data = {
         "name": name,
         "dob": dob,
