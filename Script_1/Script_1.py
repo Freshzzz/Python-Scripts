@@ -7,7 +7,7 @@ import yaml
 open('output.txt', 'w', encoding="utf-8").close()
 
 def load_config(file_path):
-    required_keys = ["name_start", "name_end", "dob_start", "address_start", "address_end"]
+    required_keys = ["doc_path", "name_start", "name_end", "dob_start", "address_start", "address_end"]
     try:
         # Reads data from a .yml file
         with open("config.yml", "r", encoding="utf-8") as f:
@@ -55,14 +55,16 @@ def main():
     allDOB: list[str] = []
     allAdresses: list[str] = []
     
-    doc = load_doc("E:\\Studijos\\Praktika\\Script_1\\kolegijos praktikos Sutartis.docx")
+    # Loads the neccesary information from the config file
+    config = load_config("config.yml")
+    
+    doc_path = config.get('doc_path')
+    doc = load_doc(doc_path)
     
     # Reads the text from a .docx file
     for paragraph in doc.paragraphs:
         allText.append(paragraph.text)
     
-    # Loads the neccesary information from the config file
-    config = load_config("config.yml")
     
     name_start = config['name_start']
     name_end = config['name_end']
