@@ -1,21 +1,14 @@
 name_start:
- - studentas
- - narys
- - dėstytoją
- 
-
+    - studentas
+    - narys
+    - dėstytoją
 name_end:
- - gim.
- - lektorė
- - el.p.
- 
-
+    - gim.
+    - lektorė
+    - el.p.
 dob_start: gim.
-
 address_start: adresas
 address_end:
- - sudaryti
- - tel.
-  
-
-doc_path: "E:\\Studijos\\Praktika\\Script_1\\kolegijos praktikos Sutartis.docx"
+    - sudaryti
+    - tel.
+doc_path: E:\\Studijos\\Praktika\\Script_1\\kolegijos praktikos Sutartis.docx
