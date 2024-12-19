@@ -43,8 +43,6 @@ def change(doc, placeholder, replacement_word):
             paragraph.text = paragraph.text.replace(placeholder, replacement_word)
 
             
-
-# What happens if LibaryDoc
 def write(doc, name):
     doc.save(r"E:\\Studijos\Praktika\\Script_2\\Updated Konf Sutartis.docx")
     convert(r"E:\\Studijos\Praktika\\Script_2\\Updated Konf Sutartis.docx", fr"E:\\Studijos\Praktika\\Script_2\\{name}.pdf")
