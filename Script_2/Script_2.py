@@ -28,27 +28,23 @@ def main():
         DOB = input("Date Of Birth: ")
         address = input("Address: ")
         
-    change(doc, name, tel_nr, contract_date, contract_number, DOB, address)
+    change(doc, "[vardas]", name)
+    change(doc, "[tel_nr]", tel_nr)
+    change(doc, "[sutarties_nr]", contract_number)
+    change(doc, "[pasirasymo_data]", contract_date)
+    change(doc, "[gim_data]", DOB)
+    change(doc, "[adresas]", address)
     write(doc, name)
 
 
-# Changes all the [templates] to chosen words
-def change(doc, name, tel_nr, contract_number, contract_date, DOB, address):
+def change(doc, placeholder, replacement_word):
     for paragraph in doc.paragraphs:
-        if "[vardas]" in paragraph.text:
-            paragraph.text = paragraph.text.replace("[vardas]", name)
-        if "[tel_nr]" in paragraph.text:
-            paragraph.text = paragraph.text.replace("[tel_nr]", tel_nr)
-        if "[sutarties_nr]" in paragraph.text:
-            paragraph.text = paragraph.text.replace("[sutarties_nr]", contract_number)
-        if "[pasirasymo_data]" in paragraph.text:
-            paragraph.text = paragraph.text.replace("[pasirasymo_data]", contract_date)
-        if "[gim_data]" in paragraph.text:
-            paragraph.text = paragraph.text.replace("[gim_data]", DOB)
-        if "[adresas]" in paragraph.text:
-            paragraph.text = paragraph.text.replace("[adresas]", address)
+        if placeholder in paragraph.text:
+            paragraph.text = paragraph.text.replace(placeholder, replacement_word)
+
             
 
+# What happens if LibaryDoc
 def write(doc, name):
     doc.save(r"E:\\Studijos\Praktika\\Script_2\\Updated Konf Sutartis.docx")
     convert(r"E:\\Studijos\Praktika\\Script_2\\Updated Konf Sutartis.docx", fr"E:\\Studijos\Praktika\\Script_2\\{name}.pdf")
