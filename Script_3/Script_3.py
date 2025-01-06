@@ -1,6 +1,7 @@
 import subprocess
 import os
 import yaml
+import time
 
 shared_data_PATH = r"E:\\Studijos\\Praktika\\Script_2\\shared_data.yml"
 output_file_PATH = r'E:\\Studijos\\Praktika\\Script_1\\output.txt'
@@ -94,10 +95,10 @@ def second_script():
 def main():
     names, dobs, adresses = [], [], []
     
-    print("1 - Choose data from a .docx file")
-    print("2 - Enter your information")
+    print("Getting data from output.txt file")
+    time.sleep(3)
     
-    choice = choose(2)
+    choice = 1
     
     if(choice == 1):
         first_Script()

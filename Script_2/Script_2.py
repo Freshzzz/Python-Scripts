@@ -2,6 +2,8 @@ from docx import Document
 from docx2pdf import convert
 import yaml
 import os
+import subprocess
+from tkinter import messagebox
 
 def main():
     name = ""
@@ -21,12 +23,9 @@ def main():
         contract_date = input("Contract signing date: ")
         os.remove(shared_data)
     else:
-        name = input("Student Name: ")
-        tel_nr = input("Phone Number: ")
-        contract_number = input("Contract number: ")
-        contract_date = input("Contract signing date: ")
-        DOB = input("Date Of Birth: ")
-        address = input("Address: ")
+        messagebox.showerror("Error", "Use Script 2 Manual Edition")
+        exit()
+        
         
     change(doc, "[vardas]", name)
     change(doc, "[tel_nr]", tel_nr)

@@ -131,7 +131,7 @@ def adress_list(i, words, allAdresses, add_end):
 # Saves the data to the output.txt file
 def write(allNames, allDOB, allAdresses):
     with open('E:\\Studijos\\Praktika\\Script_1\\output.txt', 'a', encoding='utf-8') as f:
-        print("Printing")
+        #print("Printing")
         f.write('	Names \n')
         f.write('\n'.join(allNames) + '\n')
         f.write('\n	Date Of Birth \n')
